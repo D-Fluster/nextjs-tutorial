@@ -1,7 +1,76 @@
+/* NOTES:
+
+//
+// PART 2: STYLING NEXT.JS APPLICATIONS
+// https://youtu.be/ZVnjOPwW4ZA?t=2400
+//
+
+//
+// GLOBAL STYLES
+// https://youtu.be/ZVnjOPwW4ZA?t=2420
+//
+
+At the top, there are 3 directives to import the base styles from Tailwind,
+// which is a very popular CSS framework
+
+Next, we have the ":root" selector, which is where we typically define
+// custom properties (e.g., "--foreground-rgb")
+
+There's also a relatively new "@media (prefers-color-scheme: dark)" feature,
+// which detects whether the user is in "dark mode" and, if so, overrides
+// the default custom properties in ":root"
+
+Then, when styling the "body" element, we plug the value of the ":root"'s
+// custom property as a variable (i.e., "color: rgb(var(--foreground-rgb))") 
+// to color the body element
+
+The "--background-[start/end]-rgb" custom properties define a color gradient;
+// however, we're not using them in this application so we can clean them out
+
+Since this is the *globals* style sheet, it's best practice to use it to style
+// anything that's truly global within our application -- e.g., body, headings,
+// hyperlinks -- but *not* things that are specific to certain pages/components
+
+Among other things, this helps prevent this style sheet from becoming cumbersomely
+// long and including "dead styles" for components/pages that have been deleted
+
+For page- and/or component-specific styles, we should use CSS modules or Tailwind
+
+//
+// CSS MODULES
+// https://youtu.be/ZVnjOPwW4ZA?t=2572
+// 
+
+A CSS module is a CSS file that is scoped to a page or a component as a way to
+// prevent styles from clashing with or overriding each other
+
+If you have classes styled in multiple style sheets, they can override each other
+// depending on how the files are imported
+
+Hop to "components/ProductCard.module.css"
+
+*/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --foreground-rgb: 0, 0, 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  padding: 1rem;
+}
+
+/* ORIGINAL CONTENTS:
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -25,3 +94,4 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+*/

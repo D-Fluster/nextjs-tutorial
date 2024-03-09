@@ -1,0 +1,40 @@
+/* NOTES:
+
+//
+// CSS MODULES
+// https://youtu.be/ZVnjOPwW4ZA?t=2572
+// 
+
+We could have called this file anything, but the best practice is to name it
+// the same thing as the component that it's styling -- and the important
+// part is to use the file type ".module.css"
+
+In this CSS module, we can define classes that are scoped to our
+// "ProductCard" componenet only -- so we can define a style for
+// a class called (e.g.) ".card" without worrying that it'll clash
+// with the stylings for another ".card" class elsewhere in the app!
+
+We then import this module into our "ProductCard" component with:
+
+import styles from "./ProductCard.module.css";
+
+The name we assign -- here, "styles" -- doesn't actually matter, but
+// typically we use "styles"
+
+This (the "ProductCard" component?) will be a JavaScript object, so the
+// classes defined within this CSS module will end up being *properties*
+// of that object -- so that when we start typing "styles." within the
+// "ProductCard.tsx" component file, we should see the classes we've
+// defined such as "styles.card" (since we defined a ".card" class style)
+
+Because JavaScript properties cannot have hyphens in them (e.g., 
+// "card-container" would not be a valid name for a JS property),
+// we can't have hyphens in the class names in our CSS modules;
+// rather, camelCase notation should be used (e.g., "cardContainer")
+
+*/
+
+.card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
